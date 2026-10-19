@@ -1,0 +1,14 @@
+[
+  { "id": "a1", "nombre": "Tacos al pastor (3)", "precio": 60, "categoria": "Antojitos", "disponible": true },
+  { "id": "a2", "nombre": "Quesadilla de flor de calabaza", "precio": 45, "categoria": "Antojitos", "disponible": true },
+  { "id": "a3", "nombre": "Chalupas poblanas (4)", "precio": 50, "categoria": "Antojitos", "disponible": true },
+  { "id": "p1", "nombre": "Mole poblano con arroz", "precio": 145, "categoria": "Platos fuertes", "disponible": true },
+  { "id": "p2", "nombre": "Chiles en nogada", "precio": 185, "categoria": "Platos fuertes", "disponible": false },
+  { "id": "p3", "nombre": "Pozole rojo", "precio": 95, "categoria": "Platos fuertes", "disponible": true },
+  { "id": "p4", "nombre": "Enchiladas verdes", "precio": 90, "categoria": "Platos fuertes", "disponible": true },
+  { "id": "b1", "nombre": "Agua de jamaica", "precio": 30, "categoria": "Bebidas", "disponible": true },
+  { "id": "b2", "nombre": "Café de olla", "precio": 35, "categoria": "Bebidas", "disponible": true },
+  { "id": "b3", "nombre": "Refresco", "precio": 30, "categoria": "Bebidas", "disponible": true },
+  { "id": "d1", "nombre": "Arroz con leche", "precio": 40, "categoria": "Postres", "disponible": true },
+  { "id": "d2", "nombre": "Camote poblano", "precio": 35, "categoria": "Postres", "disponible": false }
+]

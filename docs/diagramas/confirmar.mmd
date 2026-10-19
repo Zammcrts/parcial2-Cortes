@@ -1,0 +1,19 @@
+sequenceDiagram
+    actor M as Mesero
+    participant A as App.jsx
+    participant L as logic/orden.js
+    participant D as data/ordenes.js
+    participant F as Firestore
+    M->>A: clic en Confirmar orden
+    A->>L: validarOrden(orden)
+    alt orden inválida
+        L-->>A: valida false y errores
+        A-->>M: mensajes con role alert
+    else orden válida
+        A->>D: await guardarOrden(orden)
+        D->>L: calcularTotal(orden)
+        D->>F: addDoc en la colección ordenes
+        F-->>D: referencia del documento
+        D-->>A: id del documento
+        A-->>M: Orden enviada a cocina, folio y orden vacía
+    end

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="660" viewBox="0 0 1000 660" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .caja{fill:#fff;stroke:#555;stroke-width:1.5}
+    .gris{fill:#eee;stroke:#555;stroke-width:1.5}
+    .t{font-size:14px;fill:#222}
+    .tb{font-size:15px;font-weight:bold;fill:#222}
+    .h{font-size:18px;font-weight:bold;fill:#222}
+    .btn{fill:#fff;stroke:#222;stroke-width:1.5}
+    .btnoff{fill:#ddd;stroke:#999;stroke-width:1.5;stroke-dasharray:4 3}
+    .nota{font-size:13px;fill:#c0392b;font-weight:bold}
+    .lin{stroke:#c0392b;stroke-width:1.2;stroke-dasharray:5 4}
+  </style>
+  <rect x="0" y="0" width="1000" height="660" fill="#fafafa"/>
+  <rect x="20" y="15" width="960" height="55" class="gris"/>
+  <text x="40" y="48" class="h">La Fonda de Doña Lupe — Toma de órdenes</text>
+
+  <!-- MENÚ -->
+  <rect x="20" y="85" width="600" height="555" class="caja"/>
+  <text x="40" y="115" class="h">Menú</text>
+  <text x="40" y="150" class="tb">Antojitos</text>
+  <rect x="40" y="160" width="560" height="40" class="caja"/>
+  <text x="55" y="185" class="t">Tacos al pastor (3)</text><text x="400" y="185" class="t">$60</text>
+  <rect x="490" y="167" width="95" height="26" class="btn"/><text x="510" y="185" class="t">Agregar</text>
+  <rect x="40" y="208" width="560" height="40" class="caja"/>
+  <text x="55" y="233" class="t">Quesadilla de flor de calabaza</text><text x="400" y="233" class="t">$45</text>
+  <rect x="490" y="215" width="95" height="26" class="btn"/><text x="510" y="233" class="t">Agregar</text>
+  <text x="40" y="285" class="tb">Platos fuertes</text>
+  <rect x="40" y="295" width="560" height="40" class="caja"/>
+  <text x="55" y="320" class="t">Mole poblano con arroz</text><text x="400" y="320" class="t">$145</text>
+  <rect x="490" y="302" width="95" height="26" class="btn"/><text x="510" y="320" class="t">Agregar</text>
+  <rect x="40" y="343" width="560" height="40" class="caja"/>
+  <text x="55" y="368" class="t" style="fill:#888">Chiles en nogada</text><text x="400" y="368" class="t">$185</text>
+  <rect x="490" y="350" width="95" height="26" class="btnoff"/><text x="507" y="368" class="t" fill="#777">Agotado</text>
+  <text x="40" y="420" class="tb">Bebidas</text>
+  <rect x="40" y="430" width="560" height="40" class="caja"/>
+  <text x="55" y="455" class="t">Agua de jamaica</text><text x="400" y="455" class="t">$30</text>
+  <rect x="490" y="437" width="95" height="26" class="btn"/><text x="510" y="455" class="t">Agregar</text>
+  <text x="40" y="500" class="t" fill="#888">… Postres</text>
+
+  <!-- ORDEN -->
+  <rect x="640" y="85" width="340" height="555" class="caja"/>
+  <text x="660" y="115" class="h">Orden</text>
+  <text x="660" y="150" class="t">Mesa</text><rect x="705" y="133" width="70" height="26" class="caja"/><text x="720" y="151" class="t">5</text>
+  <rect x="660" y="175" width="300" height="95" class="caja"/>
+  <text x="675" y="198" class="tb">Tacos al pastor (3)</text>
+  <text x="675" y="220" class="t">× 2  =  $120</text>
+  <rect x="675" y="230" width="58" height="24" class="btn"/><text x="684" y="247" class="t">Menos</text>
+  <rect x="740" y="230" width="45" height="24" class="btn"/><text x="751" y="247" class="t">Más</text>
+  <rect x="792" y="230" width="60" height="24" class="btn"/><text x="801" y="247" class="t">Quitar</text>
+  <rect x="860" y="230" width="90" height="24" class="caja"/><text x="866" y="247" class="t" fill="#888">sin cebolla</text>
+  <rect x="660" y="280" width="300" height="95" class="caja"/>
+  <text x="675" y="303" class="tb">Agua de jamaica</text>
+  <text x="675" y="325" class="t">× 1  =  $30</text>
+  <rect x="675" y="335" width="58" height="24" class="btn"/><text x="684" y="352" class="t">Menos</text>
+  <rect x="740" y="335" width="45" height="24" class="btn"/><text x="751" y="352" class="t">Más</text>
+  <rect x="792" y="335" width="60" height="24" class="btn"/><text x="801" y="352" class="t">Quitar</text>
+  <rect x="860" y="335" width="90" height="24" class="caja"/><text x="866" y="352" class="t" fill="#888">Nota</text>
+  <text x="660" y="420" class="h">Total: $150.00</text>
+  <rect x="660" y="438" width="300" height="26" fill="none" stroke="#a40000" stroke-dasharray="4 3"/><text x="670" y="456" class="t" style="fill:#a40000">(aquí van los mensajes de error)</text>
+  <rect x="660" y="480" width="300" height="40" class="gris"/><text x="752" y="506" class="tb">Confirmar orden</text>
+
+  <!-- Anotaciones -->
+  <text x="280" y="150" class="nota">(1) HU-01 · menú (ya hecho)</text>
+  <text x="265" y="400" class="nota">(2) HU-06 · agotado</text>
+  <line x1="460" y1="395" x2="490" y2="368" class="lin"/>
+  <text x="790" y="151" class="nota">(3) HU-04 · mesa 1–20</text>
+  <text x="660" y="395" class="nota">(4) HU-02 · HU-05 Más/Menos · HU-08 nota</text>
+  <text x="820" y="420" class="nota">(5) HU-03</text>
+  <text x="660" y="545" class="nota">(6) HU-04 · errores con role="alert"</text>
+</svg>

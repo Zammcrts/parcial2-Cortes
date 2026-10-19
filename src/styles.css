@@ -1,0 +1,154 @@
+/* La Fonda de Doña Lupe — hoja de estilos del proyecto. YA ESTÁ LISTA.
+   Los selectores usan el contrato de docs/08-contrato-ui.md (aria-label, role,
+   data-testid). Si tu marcado respeta el contrato, la pantalla se ve como el
+   wireframe de alta fidelidad sin escribir CSS. */
+
+:root {
+  --crema: #faf6ef;
+  --papel: #ffffff;
+  --tinta: #2b2118;
+  --tenue: #7a6a5d;
+  --borde: #eadfce;
+  --marca: #9a3412;
+  --marca-oscura: #3d1a0e;
+  --marca-suave: #fdf0e6;
+  --ok: #166534;
+  --ok-suave: #ecfdf3;
+  --error: #b91c1c;
+  --error-suave: #fef2f2;
+  --radio: 12px;
+  --sombra: 0 1px 2px rgba(61, 26, 14, .06), 0 4px 16px rgba(61, 26, 14, .06);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--crema);
+  color: var(--tinta);
+  line-height: 1.45;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 1.1rem max(1.5rem, calc((100vw - 1200px) / 2));
+  background: var(--marca-oscura); color: #fbeee0;
+}
+.encabezado h1 {
+  margin: 0; font-family: Charter, "Bitstream Charter", Georgia, serif;
+  font-size: 1.6rem; font-weight: 700; letter-spacing: .2px;
+}
+.encabezado p { margin: 0; opacity: .75; font-size: .95rem; }
+.encabezado button {
+  margin-left: auto; background: transparent; color: #fbeee0;
+  border: 1px solid rgba(251, 238, 224, .45);
+}
+.encabezado button:hover { background: rgba(251, 238, 224, .12); }
+
+/* ---------- Distribución ---------- */
+.layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 1.75rem;
+  max-width: 1200px; margin: 0 auto; padding: 1.75rem 1.5rem;
+}
+@media (max-width: 860px) { .layout { grid-template-columns: 1fr; padding: 1rem; } }
+h2 { margin: 0 0 1rem; font-size: 1.25rem; }
+
+/* ---------- Botones ---------- */
+button {
+  font: inherit; font-size: .9rem; font-weight: 600; cursor: pointer;
+  padding: .45rem .9rem; border-radius: 999px;
+  border: 1px solid var(--marca); background: var(--papel); color: var(--marca);
+  transition: background .15s, color .15s;
+}
+button:hover:not(:disabled) { background: var(--marca); color: #fff; }
+button:disabled { cursor: not-allowed; border-color: var(--borde); color: var(--tenue); background: #f3eee6; }
+button:focus-visible, input:focus-visible { outline: 3px solid #f59e0b; outline-offset: 2px; }
+
+/* ---------- Menú ---------- */
+section[aria-label="Menú"] > div {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: .75rem; margin-bottom: 1.5rem;
+}
+section[aria-label="Menú"] h3 {
+  grid-column: 1 / -1; margin: .25rem 0 0; font-size: .78rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--tenue);
+  border-bottom: 1px solid var(--borde); padding-bottom: .4rem;
+}
+section[aria-label="Menú"] article {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+  background: var(--papel); border: 1px solid var(--borde); border-radius: var(--radio);
+  padding: .9rem 1rem; box-shadow: var(--sombra);
+}
+section[aria-label="Menú"] article strong { flex: 1 1 100%; font-size: 1rem; font-weight: 600; }
+section[aria-label="Menú"] article span {
+  background: var(--marca-suave); color: var(--marca); font-weight: 700;
+  padding: .15rem .6rem; border-radius: 999px; font-size: .9rem;
+}
+section[aria-label="Menú"] article button { margin-left: auto; }
+section[aria-label="Menú"] article:has(button:disabled) { opacity: .65; box-shadow: none; }
+section[aria-label="Menú"] article:has(button:disabled) strong { text-decoration: line-through; }
+
+/* ---------- Orden ---------- */
+section[aria-label="Orden"] {
+  position: sticky; top: 1rem; align-self: start;
+  background: var(--papel); border: 1px solid var(--borde); border-radius: 16px;
+  padding: 1.25rem; box-shadow: var(--sombra);
+}
+section[aria-label="Orden"] > label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-weight: 600; margin-bottom: 1rem;
+}
+section[aria-label="Orden"] input {
+  font: inherit; padding: .45rem .6rem; border: 1px solid var(--borde);
+  border-radius: 8px; background: #fffdf9;
+}
+section[aria-label="Orden"] > label input { width: 5.5rem; text-align: center; font-weight: 700; }
+section[aria-label="Orden"] > p:not([role]) { color: var(--tenue); }
+section[aria-label="Orden"] ul { list-style: none; margin: 0 0 1rem; padding: 0; }
+section[aria-label="Orden"] li {
+  padding: .8rem 0; border-bottom: 1px dashed var(--borde);
+  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
+}
+section[aria-label="Orden"] li > div:first-child { flex: 1 1 100%; }
+section[aria-label="Orden"] li button { padding: .25rem .65rem; font-size: .8rem; }
+section[aria-label="Orden"] li > div:last-child { flex: 1 1 100%; }
+section[aria-label="Orden"] li input { width: 100%; font-size: .85rem; }
+[data-testid="cantidad"] {
+  display: inline-block; min-width: 1.8rem; text-align: center; font-weight: 700;
+  background: var(--marca-suave); color: var(--marca); border-radius: 6px; padding: 0 .3rem;
+}
+.total, section[aria-label="Orden"] p:has([data-testid="total"]) {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin: .5rem 0 1rem; font-weight: 600; color: var(--tenue);
+}
+[data-testid="total"] { font-size: 1.6rem; font-weight: 800; color: var(--tinta); }
+section[aria-label="Orden"] > button, button.principal {
+  width: 100%; padding: .8rem; font-size: 1rem; border-radius: 10px;
+  background: var(--marca); color: #fff; border-color: var(--marca);
+}
+section[aria-label="Orden"] > button:hover:not(:disabled), button.principal:hover:not(:disabled) { background: #7c2d12; }
+
+/* ---------- Mensajes ---------- */
+[role="alert"] {
+  margin: .5rem 0; padding: .6rem .8rem; border-radius: 8px;
+  background: var(--error-suave); color: var(--error); border-left: 4px solid var(--error);
+  font-weight: 600; font-size: .9rem;
+}
+[role="status"] {
+  position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 10;
+  width: min(380px, calc(100vw - 2rem)); padding: 1rem 1.25rem;
+  background: var(--ok-suave); color: var(--ok); border: 1px solid #bbf7d0;
+  border-left: 6px solid var(--ok); border-radius: var(--radio);
+  box-shadow: 0 8px 30px rgba(22, 101, 52, .18);
+}
+[role="status"] p { margin: .2rem 0 0; color: var(--tinta); font-family: ui-monospace, Menlo, monospace; }
+
+/* ---------- Cocina (HU-07) ---------- */
+section[aria-label="Cocina"] { grid-column: 1 / -1; }
+section[aria-label="Cocina"] article {
+  display: inline-block; vertical-align: top; width: 300px; margin: 0 .75rem .75rem 0;
+  background: var(--papel); border: 1px solid var(--borde); border-top: 6px solid #f59e0b;
+  border-radius: var(--radio); padding: 1rem; box-shadow: var(--sombra);
+}
+section[aria-label="Cocina"] ul { padding-left: 1.1rem; margin: .6rem 0 1rem; }

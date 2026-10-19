@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Helvetica, Arial, sans-serif">
+  <style>
+    .caja{fill:#fff;stroke:#555;stroke-width:1.5}
+    .gris{fill:#eee;stroke:#555;stroke-width:1.5}
+    .t{font-size:14px;fill:#222}
+    .tb{font-size:15px;font-weight:bold;fill:#222}
+    .h{font-size:18px;font-weight:bold;fill:#222}
+    .nota{font-size:13px;fill:#c0392b;font-weight:bold}
+  </style>
+  <rect x="0" y="0" width="1000" height="520" fill="#fafafa"/>
+  <rect x="20" y="15" width="960" height="55" class="gris"/>
+  <text x="40" y="48" class="h">La Fonda de Doña Lupe — Toma de órdenes</text>
+  <rect x="20" y="85" width="600" height="300" class="caja"/>
+  <text x="40" y="115" class="h">Menú</text>
+  <text x="40" y="150" class="t" fill="#888">(igual que en 01-toma-de-orden)</text>
+  <rect x="640" y="85" width="340" height="300" class="caja"/>
+  <text x="660" y="115" class="h">Orden</text>
+  <text x="660" y="150" class="t">Mesa</text><rect x="705" y="133" width="70" height="26" class="caja"/>
+  <text x="660" y="195" class="t" fill="#888">Tu orden está vacía</text>
+  <text x="660" y="250" class="h">Total: $0.00</text>
+  <rect x="660" y="300" width="300" height="40" class="gris"/><text x="752" y="326" class="tb">Confirmar orden</text>
+  <rect x="20" y="400" width="960" height="90" class="caja" stroke-width="3"/>
+  <text x="45" y="435" class="h">Orden enviada a cocina</text>
+  <text x="45" y="465" class="t">Folio: 8fK2xQm1ZtR0aLpE</text>
+  <text x="600" y="435" class="nota">HU-04-E1 · role="status"</text>
+  <text x="600" y="460" class="nota">el folio es el id del documento en Firestore</text>
+  <text x="790" y="195" class="nota">la orden se vacía</text>
+</svg>

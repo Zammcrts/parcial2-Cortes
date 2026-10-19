@@ -1,0 +1,17 @@
+flowchart TB
+    P["<b>Presentación</b> (React)<br/>App.jsx: estado y manejadores<br/>Menu.jsx (hecho) · Orden.jsx · Confirmacion.jsx (hecho)"]
+    R["<b>Reglas</b> (JavaScript puro)<br/>logic/orden.js"]
+    D["<b>Datos</b><br/>data/menu.js (hecho) · data/ordenes.js · firebase.js (hecho)"]
+    J[("public/menu.json")]
+    F[("Firestore<br/>colección ordenes")]
+
+    P -->|"llama a"| R
+    P -->|"llama a"| D
+    D -->|"usa calcularTotal"| R
+    D --> J
+    D --> F
+
+    classDef capa fill:#fdf0e6,stroke:#9a3412,color:#2b2118
+    classDef externo fill:#ffffff,stroke:#7a6a5d,color:#2b2118
+    class P,R,D capa
+    class J,F externo
