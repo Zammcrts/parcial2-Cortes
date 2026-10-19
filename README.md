@@ -7,11 +7,8 @@
 
 ## Datos del alumno
 
-> **Lo primero que haces:** reemplaza `NOMBRE` y `MATRICULA` con tus datos, haz commit y push.
-> Este bloque es la portada de tu examen.
-
-- **Nombre:** NOMBRE
-- **Matrícula:** MATRICULA
+- **Nombre:** Edna Samantha Cortes Carrisoza
+- **Matrícula:** 198343
 
 ---
 
