@@ -56,7 +56,7 @@ export default function App() {
     setErrores([])
   }
 
-  // HU-04 RNF-02.
+  // HU-04 RNF-02 HU-07-E1
   async function handleConfirmar() {
     const { valida, errores: codigos } = validarOrden(orden)
     if (!valida) {
@@ -65,14 +65,16 @@ export default function App() {
     }
 
     setEnviando(true)
+    setFolio(null)
     try {
       const { id } = await guardarOrden(orden)
       setFolio(id)
       setOrden(crearOrden())
       setErrores([])
     } catch (error) {
+      // HU-07-E1 fallos posibles
       console.error(error)
-      setErrores(['No se pudo enviar la orden. Intenta de nuevo.'])
+      setErrores(['no se pudo enviar la orden. intenta de nuevo'])
     } finally {
       setEnviando(false)
     }
