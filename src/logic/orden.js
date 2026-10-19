@@ -38,26 +38,53 @@ export function quitarPlatillo(orden, id) {
 
 // HU-02-E1, HU-02-E2 (y HU-05, HU-06 cuando llegues a los Should)
 export function agregarPlatillo(orden, platillo) {
-  // TODO
-  return orden
+  const yaEsta = orden.items.some((item) => item.id === platillo.id)
+
+  // HU-02-E2: ya está → su cantidad sube en 1, sin duplicarlo
+  if (yaEsta) {
+    return {
+      ...orden,
+      items: orden.items.map((item) =>
+        item.id === platillo.id ? { ...item, cantidad: item.cantidad + 1 } : item
+      ),
+    }
+  }
+
+  // HU-02-E1: no está → entra con cantidad 1 y nota vacía
+  const nuevo = {
+    id: platillo.id,
+    nombre: platillo.nombre,
+    precio: platillo.precio,
+    cantidad: 1,
+    nota: '',
+  }
+  return { ...orden, items: [...orden.items, nuevo] }
 }
 
-// HU-03
+// HU-03. caluco de precios
 export function calcularTotal(orden) {
-  // TODO
-  return 0
+  return orden.items.reduce((suma, item) => suma + item.precio * item.cantidad, 0)
 }
 
-// HU-04-E2
+// HU-04-E2. Guarda la mesa como un int
 export function asignarMesa(orden, valor) {
-  // TODO
-  return orden
+  const texto = String(valor ?? '').trim()
+  const numero = Number(texto)
+  const mesa = texto === '' || Number.isNaN(numero) ? null : numero
+  return { ...orden, mesa }
 }
 
 // HU-04-E2, HU-04-E3
 export function validarOrden(orden) {
-  // TODO
-  return { valida: false, errores: [] }
+  const errores = []
+
+  const mesaValida =
+    Number.isInteger(orden.mesa) && orden.mesa >= MESA_MIN && orden.mesa <= MESA_MAX
+  if (!mesaValida) errores.push('MESA_INVALIDA')
+
+  if (orden.items.length === 0) errores.push('ORDEN_VACIA')
+
+  return { valida: errores.length === 0, errores }
 }
 
 // ---------------------------------------------------------------------------

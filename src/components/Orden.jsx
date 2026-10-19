@@ -1,14 +1,66 @@
-// Muestra la orden en curso: mesa, platillos, total, errores y el botón de
-// confirmar. Ver docs/08-contrato-ui.md y el wireframe de docs/07-wireframes.md.
-// Toma Menu.jsx como modelo.
-//
-// Props: decide tú cuáles necesita y escríbelas aquí.
-//        (Pista: la orden, el total, los mensajes de error y una función por acción.)
-export default function Orden({ orden }) {
+
+function formatoPesos(cantidad) {
+  return `$${cantidad.toFixed(2)}`
+}
+
+export default function Orden({
+  orden,
+  total,
+  errores = [],
+  enviando = false,
+  onCambiarMesa,
+  onQuitar,
+  onConfirmar,
+}) {
   return (
     <section aria-label="Orden">
       <h2>Orden</h2>
-      {/* TODO HU-02 · HU-03 · HU-04 */}
+
+      {/* HU-04 mesa */}
+      <label>
+        Mesa{' '}
+        <input
+          type="number"
+          min="1"
+          max="20"
+          value={orden.mesa ?? ''}
+          onChange={(e) => onCambiarMesa(e.target.value)}
+        />
+      </label>
+
+      {/* HU-02 platillos de la orden */}
+      {orden.items.length === 0 ? (
+        <p>Sin platillos todavía.</p>
+      ) : (
+        <ul>
+          {orden.items.map((item) => (
+            <li key={item.id} aria-label={item.nombre}>
+              <strong>{item.nombre}</strong> ×{' '}
+              <span data-testid="cantidad">{item.cantidad}</span>{' '}
+              <span>{formatoPesos(item.precio * item.cantidad)}</span>{' '}
+              <button type="button" onClick={() => onQuitar(item.id)}>
+                Quitar
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* HU-03: total */}
+      <p>
+        Total: <span data-testid="total">{formatoPesos(total)}</span>
+      </p>
+
+      {/* HU-04: error handlers */}
+      {errores.map((mensaje) => (
+        <p key={mensaje} role="alert">
+          {mensaje}
+        </p>
+      ))}
+
+      <button type="button" onClick={onConfirmar} disabled={enviando}>
+        Confirmar orden
+      </button>
     </section>
   )
 }
