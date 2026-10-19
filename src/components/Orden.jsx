@@ -1,4 +1,3 @@
-
 function formatoPesos(cantidad) {
   return `$${cantidad.toFixed(2)}`
 }
@@ -9,6 +8,7 @@ export default function Orden({
   errores = [],
   enviando = false,
   onCambiarMesa,
+  onCambiarCantidad,
   onQuitar,
   onConfirmar,
 }) {
@@ -28,7 +28,7 @@ export default function Orden({
         />
       </label>
 
-        {/* HU-02 y HU-05 */}
+      {/* HU-02 y HU-05 */}
       {orden.items.length === 0 ? (
         <p>Sin platillos todavía.</p>
       ) : (
@@ -63,7 +63,7 @@ export default function Orden({
         Total: <span data-testid="total">{formatoPesos(total)}</span>
       </p>
 
-      {/* HU-04: error handlers */}
+      {/* HU-04 error handlers */}
       {errores.map((mensaje) => (
         <p key={mensaje} role="alert">
           {mensaje}

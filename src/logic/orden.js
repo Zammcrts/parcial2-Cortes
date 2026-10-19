@@ -25,12 +25,16 @@ export function quitarPlatillo(orden, id) {
 // MUST
 // ---------------------------------------------------------------------------
 
-// HU-02-E1, HU-02-E2 (y HU-05, HU-06 cuando llegues a los Should)
+// HU-02-E1, HU-02-E2, HU-05-E2, HU-06-E1
 export function agregarPlatillo(orden, platillo) {
+  // HU-06-E1: un platillo agotado no entra; la orden no cambia
+  // La regla vive aquí aunque Menu.jsx ya deshabilite el botón
+  if (platillo.disponible === false) return orden
+
   const yaEsta = orden.items.some((item) => item.id === platillo.id)
 
-  // HU-02-E2: ya está → su cantidad sube en 1, sin duplicarlo
-  // HU-05-E2: nunca pasa de MAX_POR_PLATILLO
+  // HU-02-E2
+  // HU-05-E2
   if (yaEsta) {
     return {
       ...orden,
@@ -42,7 +46,7 @@ export function agregarPlatillo(orden, platillo) {
     }
   }
 
-  // HU-02-E1: no está → entra con cantidad 1 y nota vacía
+  // HU-02-E1:entra con cantidad 1 y  vacía
   const nuevo = {
     id: platillo.id,
     nombre: platillo.nombre,
@@ -84,8 +88,8 @@ export function validarOrden(orden) {
 // ---------------------------------------------------------------------------
 
 // HU-05
-// HU-05-E1: cantidad <= 0 → quita el item (Menos con cantidad 1).
-// HU-05-E2: más de MAX_POR_PLATILLO → se queda en el máximo.
+// HU-05-E1 cantidad <= 0 → quita el item 
+// HU-05-E2 más de MAX_POR_PLATILLO
 export function cambiarCantidad(orden, id, cantidad) {
   if (cantidad <= 0) return quitarPlatillo(orden, id)
 

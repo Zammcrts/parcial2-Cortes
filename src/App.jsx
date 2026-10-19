@@ -1,6 +1,3 @@
-// Componente raíz. Ver docs/05-arquitectura.md: App es el ÚNICO componente con
-// estado y el único que llama a src/data/. Menu, Orden y Confirmacion solo
-// reciben props.
 import { useEffect, useState } from 'react'
 import Menu from './components/Menu'
 import Orden from './components/Orden'
