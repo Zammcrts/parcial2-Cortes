@@ -1,14 +1,3 @@
-// Reglas de negocio de la orden.
-// Ver docs/05-arquitectura.md (contrato de cada función) y docs/02-requerimientos.md.
-//
-// Todas las funciones de este archivo son funciones normales de JavaScript:
-//   - No usan React ni Firebase.
-//   - Reciben la orden y regresan una orden NUEVA, sin modificar la que recibieron.
-//     Es lo mismo que hiciste en la Pokédex con [...equipo, p] y equipo.filter(...).
-//
-// Forma de una orden:
-//   { mesa: number | null, items: [ { id, nombre, precio, cantidad, nota } ] }
-
 export const MAX_POR_PLATILLO = 10
 export const MESA_MIN = 1
 export const MESA_MAX = 20
@@ -41,11 +30,14 @@ export function agregarPlatillo(orden, platillo) {
   const yaEsta = orden.items.some((item) => item.id === platillo.id)
 
   // HU-02-E2: ya está → su cantidad sube en 1, sin duplicarlo
+  // HU-05-E2: nunca pasa de MAX_POR_PLATILLO
   if (yaEsta) {
     return {
       ...orden,
       items: orden.items.map((item) =>
-        item.id === platillo.id ? { ...item, cantidad: item.cantidad + 1 } : item
+        item.id === platillo.id
+          ? { ...item, cantidad: Math.min(item.cantidad + 1, MAX_POR_PLATILLO) }
+          : item
       ),
     }
   }
@@ -92,9 +84,18 @@ export function validarOrden(orden) {
 // ---------------------------------------------------------------------------
 
 // HU-05
+// HU-05-E1: cantidad <= 0 → quita el item (Menos con cantidad 1).
+// HU-05-E2: más de MAX_POR_PLATILLO → se queda en el máximo.
 export function cambiarCantidad(orden, id, cantidad) {
-  // TODO
-  return orden
+  if (cantidad <= 0) return quitarPlatillo(orden, id)
+
+  const nueva = Math.min(cantidad, MAX_POR_PLATILLO)
+  return {
+    ...orden,
+    items: orden.items.map((item) =>
+      item.id === id ? { ...item, cantidad: nueva } : item
+    ),
+  }
 }
 
 // ---------------------------------------------------------------------------

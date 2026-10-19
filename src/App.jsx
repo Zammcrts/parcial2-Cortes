@@ -10,6 +10,7 @@ import {
   agregarPlatillo,
   asignarMesa,
   calcularTotal,
+  cambiarCantidad,
   crearOrden,
   quitarPlatillo,
   validarOrden,
@@ -48,6 +49,11 @@ export default function App() {
     setOrden((actual) => quitarPlatillo(actual, id))
   }
 
+  // HU-05
+  function handleCambiarCantidad(id, cantidad) {
+    setOrden((actual) => cambiarCantidad(actual, id, cantidad))
+  }
+
   function handleCambiarMesa(valor) {
     setOrden((actual) => asignarMesa(actual, valor))
     setErrores([])
@@ -82,7 +88,7 @@ export default function App() {
   if (cargando) {
     contenidoMenu = <p>Cargando menú…</p>
   } else if (errorMenu) {
-    contenidoMenu = <p role="alert">no se pudo cargar el menú</p>
+    contenidoMenu = <p role="alert">No se pudo cargar el menú</p>
   } else {
     contenidoMenu = <Menu menu={menu} onAgregar={handleAgregar} />
   }
@@ -102,6 +108,7 @@ export default function App() {
           errores={errores}
           enviando={enviando}
           onCambiarMesa={handleCambiarMesa}
+          onCambiarCantidad={handleCambiarCantidad}
           onQuitar={handleQuitar}
           onConfirmar={handleConfirmar}
         />

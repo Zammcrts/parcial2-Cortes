@@ -6,6 +6,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { calcularTotal } from '../logic/orden'
 
+//modelado de los datos para la base de datos de firebase
 export async function guardarOrden(orden) {
   const documento = {
     mesa: orden.mesa,

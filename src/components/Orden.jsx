@@ -28,7 +28,7 @@ export default function Orden({
         />
       </label>
 
-      {/* HU-02 platillos de la orden */}
+        {/* HU-02 y HU-05 */}
       {orden.items.length === 0 ? (
         <p>Sin platillos todavía.</p>
       ) : (
@@ -38,6 +38,18 @@ export default function Orden({
               <strong>{item.nombre}</strong> ×{' '}
               <span data-testid="cantidad">{item.cantidad}</span>{' '}
               <span>{formatoPesos(item.precio * item.cantidad)}</span>{' '}
+              <button
+                type="button"
+                onClick={() => onCambiarCantidad(item.id, item.cantidad - 1)}
+              >
+                Menos
+              </button>
+              <button
+                type="button"
+                onClick={() => onCambiarCantidad(item.id, item.cantidad + 1)}
+              >
+                Más
+              </button>
               <button type="button" onClick={() => onQuitar(item.id)}>
                 Quitar
               </button>
