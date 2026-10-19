@@ -9,6 +9,7 @@ export default function Orden({
   enviando = false,
   onCambiarMesa,
   onCambiarCantidad,
+  onPonerNota,
   onQuitar,
   onConfirmar,
 }) {
@@ -28,7 +29,7 @@ export default function Orden({
         />
       </label>
 
-      {/* HU-02 y HU-05 */}
+      {/* HU-02, HU-05 y HU-08 */}
       {orden.items.length === 0 ? (
         <p>Sin platillos todavía.</p>
       ) : (
@@ -53,6 +54,12 @@ export default function Orden({
               <button type="button" onClick={() => onQuitar(item.id)}>
                 Quitar
               </button>
+              <input
+                aria-label="Nota"
+                placeholder="Nota (ej. sin cebolla)"
+                value={item.nota}
+                onChange={(e) => onPonerNota(item.id, e.target.value)}
+              />
             </li>
           ))}
         </ul>

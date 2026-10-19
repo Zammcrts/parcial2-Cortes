@@ -106,8 +106,12 @@ export function cambiarCantidad(orden, id, cantidad) {
 // COULD
 // ---------------------------------------------------------------------------
 
-// HU-08
+// HU-08-E1 cambia la nota 
 export function ponerNota(orden, id, nota) {
-  // TODO
-  return orden
+  return {
+    ...orden,
+    items: orden.items.map((item) =>
+      item.id === id ? { ...item, nota } : item
+    ),
+  }
 }

@@ -9,6 +9,7 @@ import {
   calcularTotal,
   cambiarCantidad,
   crearOrden,
+  ponerNota,
   quitarPlatillo,
   validarOrden,
 } from './logic/orden'
@@ -24,7 +25,7 @@ export default function App() {
   const [folio, setFolio] = useState(null)
   const [enviando, setEnviando] = useState(false)
 
-  // HU-01 se carga el menu una sola vez
+  // HU-01 se carga el menu una sola vez y HU-07-E2 si falla
   useEffect(() => {
     cargarMenu()
       .then((platillos) => setMenu(platillos))
@@ -49,6 +50,11 @@ export default function App() {
   // HU-05
   function handleCambiarCantidad(id, cantidad) {
     setOrden((actual) => cambiarCantidad(actual, id, cantidad))
+  }
+
+  // HU-08
+  function handlePonerNota(id, nota) {
+    setOrden((actual) => ponerNota(actual, id, nota))
   }
 
   function handleCambiarMesa(valor) {
@@ -108,6 +114,7 @@ export default function App() {
           enviando={enviando}
           onCambiarMesa={handleCambiarMesa}
           onCambiarCantidad={handleCambiarCantidad}
+          onPonerNota={handlePonerNota}
           onQuitar={handleQuitar}
           onConfirmar={handleConfirmar}
         />
